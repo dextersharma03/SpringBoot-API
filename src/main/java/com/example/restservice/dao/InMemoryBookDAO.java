@@ -59,7 +59,7 @@ public class InMemoryBookDAO implements BookDAO {
     public void parse() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        Map<?, ?> map = objectMapper.readValue(new File("C:\\Users\\diksh\\Desktop\\GIT\\SpringbootAPI\\SpringBoot-API\\src\\main\\java\\com\\example\\restservice\\dao\\info.json"),Map.class);
+        Map<?, ?> map = objectMapper.readValue(new File("C:\\Users\\diksh\\Desktop\\GIT\\SpringbootAPI\\SpringBoot-API\\src\\main\\java\\com\\example\\restservice\\data\\info.json"),Map.class);
 
         ArrayList arrayList = new ArrayList();
 
