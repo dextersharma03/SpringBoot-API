@@ -1,24 +1,23 @@
 package com.example.restservice.dao;
 
 import com.example.restservice.model.Book;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Repository;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 //this is for dependency injections, so that we don't have to create a new instance of this class everytime in BookController
 @Repository
-public class InMemoryBookDAO implements BookDAO{
+public class InMemoryBookDAO implements BookDAO {
     private List<Book> books = new ArrayList<>();
 
-    public InMemoryBookDAO() {
-        loadBooks();
-    }
-
-    private void loadBooks() {
-        books.add(new Book(1, "Dexter's CRUD REst API", "Dexter", "Amazon"));
-        books.add(new Book(2, "Test Book", "John Snow", "Amazon"));
+    public InMemoryBookDAO() throws IOException {
+        parse();
     }
 
     @Override
@@ -54,5 +53,20 @@ public class InMemoryBookDAO implements BookDAO{
     @Override
     public void delete(int id) {
         books.remove(id-1);
+    }
+
+    @Override
+    public void parse() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        Map<?, ?> map = objectMapper.readValue(new File("C:\\Users\\diksh\\Desktop\\GIT\\SpringbootAPI\\SpringBoot-API\\src\\main\\java\\com\\example\\restservice\\dao\\info.json"),Map.class);
+
+        ArrayList arrayList = new ArrayList();
+
+        for (Map.Entry<?, ?> entry : map.entrySet()) {
+            arrayList.add(entry.getValue());
+        }
+
+        books.add(new Book((int)arrayList.get(0),(String) arrayList.get(1),(String)arrayList.get(2),(String)arrayList.get(3)));
     }
 }

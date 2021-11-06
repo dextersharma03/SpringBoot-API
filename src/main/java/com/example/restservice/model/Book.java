@@ -9,6 +9,13 @@ public class Book {
     private String author;
     private String publisher;
 
+    public Book() {
+        id = 0;
+        title = null;
+        this.author = null;
+        this.publisher = null;
+    }
+
     public Book(int id, String title, String author, String publisher) {
         this.id = id;
         this.title = title;

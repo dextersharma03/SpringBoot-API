@@ -5,6 +5,7 @@ import com.example.restservice.model.Book;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
