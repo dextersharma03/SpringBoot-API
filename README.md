@@ -1,6 +1,8 @@
 # SpringBoot-API
 Java Spring Boot API
 
+Using this API, user can request, make, delete or update the information of books stored in the JSON file.
+
 To perform the CRUD operations:
 
 To Install, follow below steps:
