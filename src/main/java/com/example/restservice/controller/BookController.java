@@ -45,7 +45,7 @@ public class BookController {
         else throw new RuntimeException("Book with id "+id+" was not found");
     }
 
-    @PostMapping
+    @PostMapping //post-mapping
     public void create(@RequestBody Book book){
         dao.create(book);
     }
